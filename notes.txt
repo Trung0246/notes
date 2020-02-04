@@ -235,8 +235,6 @@ p V (p ^ q) = p ^ (p V q) = p
 p v (q ^ r) = (p v q) ^ (p v r)
 p ^ (q v r) = (p ^ q) v (p ^ r)
 
-(p v q) v r = p v (q v r)
-
 
 (p v ~q) ^ (~p v ~q) = ~q
 
@@ -252,3 +250,18 @@ p -> (p v q)
 T || q
 T
 
+(p v q) ^ (p v r) ^ (q v r)
+q ^ r v p ^ (q v r)
+
+q ^ r ^ p v (q v r)
+
+(p ∧ ¬q) ∨ (p ∧ q) = p ∧ (¬q ∨ q) ?????
+
+var res = [];
+function test(a, b, c) {
+	return (a || b) && (a || c) && (b || c);
+}
+for (let i = 0; i < Math.pow(2, 3); ++ i) {
+	res.push(test(i >> 2 & 1, i >> 1 & 1, i & 1));
+}
+console.log(res);
