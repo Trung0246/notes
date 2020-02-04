@@ -1,0 +1,254 @@
+Algorithm func (L)
+	Input: A list L storing distinct integers.
+	Output: Sum of all even numbers in the list except 2.
+
+sum <= 0
+n <= size of L
+for i <= 0 to n - 1 do
+	if L[i] mod 2 = 0 and L[i] != 2 then
+		sum <= sum + L[i]
+
+return sum
+
+Chapter 1
+
+Roster Notation:
+A = {2, 4, 6, 8}
+Set Builder Notation
+B = {x in Z: x % 2 == 0, x > 0} (Z: all integer)
+
+S = {a, b}
+
+Membership in Set:
+
+a in S
+a, b in S
+c not in S
+
+{1, 2, 3} == {3, 1, 2}
+{1, 1, 2, 3} == {1, 2, 3}
+{1, 3, 5} != {1, 4, 5}
+
+B in A if all elem in B are in A
+let A = [1, 2, 3, 4, 5];
+let subsets_in = [
+	[1, 2, 3], //true
+]
+
+subset: x contained in A
+{3, 1, 2} == {1, 2, 3, 4, 5}
+{3, 3, 1, 2} == {1, 2, 3}
+3 != {1, 2, 3} // not set
+{1, 2, 3} == 1, 2, 3
+proper subset
+{1, 2} == {1, 2, 3} // not required to have all elems
+{1} == {1, 2, 3}
+{1, 2 ,3} != {4, 1, 2 ,3 }
+3 != {1, 2, 3}
+
+if one is a subset, then it CANNOT be a proper subset
+
+cardinality: number of unique elems
+
+N: x >= 0
+Z: parseInt
+Q: a/b => 1/2, 2/3, 3/4,... 5.23, ...
+R: pi, sqrt(2)
+
+
+Complex: a + bi
+Imaginary: ai
+
+Z+, R-,...
+
+S = NULL
+
+empty set is subset of every set
+
+empty set is subset of itself
+
+function is_subset(set1, set2) { // all elements in set1 is in set2
+	for (let i = 0; i < set1.length; ++ i) {
+		for (let j = 0; i < set2.length; ++ j) {
+
+		}
+	}
+}
+
+set can represent using venn diagrams
+
+union: {1, 2, 3, 4} + {3, 4, 5, 6} = {1, 2, 3, 4, 5, 6} ( U )
+intersect: {1, 2, 3, 4} and {3, 4, 5, 6} = {3, 4} ( U but more like ^ )
+{1, 2} and {3, 4} = NULL (a.k.a disjoint)
+diff: {3, 4, 5, 6} - {1, 2, 3, 4} = {5, 6}
+	 {1, 2, 3, 4} - {3, 4, 5, 6} = {1, 2}
+xor (symmetric diff): {1, 2, 3, 4} xor {3, 4, 5, 6} = {1, 2, 5, 6}
+complement (not exist in a set): {2, 3, 4, 5} comp {4, 5, 6}, {1, 7} = {1, 6, 7}
+
+partition (sum)
+	{x in Z: 3 <= x <= 9}
+	B {3, 4, 5} + C {6, 7, 8} + D {9} + E {3, 4, 5, 6, 7}
+
+cross
+	{2, -3, 0, 1.5} x {3, 1, 0, -2.5}
+	{(0, 0), (0, 1),...} // all possible pair
+	A{} x B{} x C{} = {(x, x, x), (x, x, x), ...} // now triple
+	{1, 2, 3} x {4, 5} = {(1, 4), (1, 5), (2, 4), (2, 5), ...}
+
+string notation: A{x, y} x B{a, b} = {xa, xb, ya, yb} // no ()
+
+power set (S)
+S = {1, 2 ,3}
+P(S) = {
+	NULL,
+	{1}, {2}, {3},
+	{1, 2}, {1, 3}, {2, 3},
+	{1, 2, 3}
+}
+
+tuple != set ( () != {} )
+(3, 6, 9) == (3, 6, 9) != (3, 9, 6)
+(1, 2, 3) != (1, 1, 2, 3) // allow dupe
+(2**2, 3**2) == (4, 9)
+
+  1
+ / \
+/   \
+|   | M_i
+|   |
+i = 3
+
+A U S
+{x: x in A OR x in S} (OR here, NOT AND)
+
+Universal set: U
+
+A = {a, b}   B = {b, c}
+P(A) ∩ P(B)
+
+{NULL, {a}, {b}, {a, b}} - {NULL, {b}, {c}, {b, c}} = {{a}, {a, b}}
+
+A = {tall, grande, venti}
+B = {foam, no-foam}
+C = {non-fat, whole}
+
+
+function sss(a) {
+	let ret = [];
+	for (let i = 0; i < a.length; ++ i) {
+		let e = a[i];
+		for (let j = 0; j < e.length; ++ j) {
+			let temp = [];
+			for (let k = 0; k < ) {
+
+			}
+			ret.push(temp);
+		}
+	}
+}
+
+A × B × C
+
+{tall}
+
+B × A × C
+B × C using roster notation.
+
+{0x: x ∈ {0, 1}2}
+
+{00, 01, 10, 11} {000, 001, 010, 011}
+
+{0x: x ∈ B}, where B = {0, 1}0 ∪ {0, 1}1 ∪ {0, 1}2
+
+{NULL, 00, 01, 10, 11}
+
+{xy: x ∈ {aa, ab} and y ∈ {a} ∪ {a}2}
+
+{a} ∪ {a}2 {aa}
+
+{a, aa} {aaa, aaaa, aba, abaa}
+
+Chapter 2
+
+Logic
+
+T F
+non-const value cannot be T or F
+p q r s for vars
+
+
+Sorted by operator pre
+~p (NOT)
+p ^ q (AND)
+p ∨ q (OR)
+p ⊕ q (XOR)
+p -> q (if p then q)
+p <-> q (XNOR) (a.k.a biconditional) ()
+
+if then:
+T | T > T
+T | F > F
+F | T > T
+F | F > T
+
+T | T > T
+T | F > F
+F | F > T ??
+
+T | T > T
+T | F > F
+F | T > T ??
+
+https://www.allaboutcircuits.com/technical-articles/universal-logic-gates/
+
+one of q or p is true (xor)
+
+(p v q) ^ ~(p ^ q) xor
+
+Tautology: always true
+Contradction: always false
+
+converse        q -> p
+contrapositive ~q -> ~p
+inverse        ~p -> ~q
+
+If rain, then close window.
+	If close window, then rain.
+	If don't close window, then not rain.
+	Don't close window if not rain.
+
+        De Morgan law
+     ~(p ^ q) = ~p V ~q
+     ~(p V q) = ~p ^ ~q
+
+(p -> q) -> r ~= p -> (q -> r)
+
+          Laws:
+     p -> q = ~p v q
+    p <-> q = (p -> q) ^ (q -> p)
+
+p V (p ^ q) = p ^ (p V q) = p
+
+(p v q) v r = p v (q v r)
+(p ^ q) ^ r = p ^ (q ^ r)
+
+p v (q ^ r) = (p v q) ^ (p v r)
+p ^ (q v r) = (p ^ q) v (p ^ r)
+
+(p v q) v r = p v (q v r)
+
+
+(p v ~q) ^ (~p v ~q) = ~q
+
+(p || !q) && (!p || !q)
+(p || !q) && !(p && q)
+!q || (p && !p)
+~q || F
+!q
+
+p -> (p v q)
+~p || (p || q)
+(~p || p) || q
+T || q
+T
+
