@@ -265,3 +265,94 @@ for (let i = 0; i < Math.pow(2, 3); ++ i) {
 	res.push(test(i >> 2 & 1, i >> 1 & 1, i & 1));
 }
 console.log(res);
+
+Preposition: always constant value
+Predicates: how much variables a statement can be
+
+R(x) is predicate x > 5
+
+Preposition:
+R(23) is true, R(-5) is false
+
+∀: all
+∃: any
+
+let x ∈ R
+∀x (x^2 > x) -> false
+             -> counter example
+
+∀y ∈ 2^+ (1/y <= y) True
+
+Every freshman at the College is taking CS 101
+
+Q(x, y) = student x is taking course y
+
+∀s ∈ College, Q(s, CS101)
+
+P(x) = x is lion, Q(x) = x is fierce, R(x) = x drinks coffee
+
+Some lions do not drink coffee
+∃x, (P(x) ^ ~R(x))
+
+All lion are fierce
+∀x, (P(x) -> R(x))
+
+~∀x P(x) = ∃x ~P(x)
+∀x ~P(x) = ~∃x P(x)
+
+Argument => sequence of proposition
+g: good golf
+c: wind calm
+d: weather dry
+
+g -> (c v d)
+c ^ d
+g
+
+g c d | c ^ d | g -> (c v d) | g |
+T T T |   T   |       T      | T | T   X
+T T F |   T   |       T      | F | T    
+T F T |   T   |       T      | T | F   X
+T F F |   T   |       T      | F | F    
+F T T |   T   |       T      | F | T    
+F T F |   T   |       T      | F | T    
+F F T |   F   |       F      | F | F    
+F F F |   F   |       T      | F | F    
+
+=> Invalid
+
+Rule of inference
+
+~p ^ q
+r -> p
+~r -> s
+s -> t
+-------
+∴ t
+
+Basically this is just a fancy way of "sum" all "and"
+
+~q
+p -> q
+--------
+∴ ((p → q) ∧ ¬q) → ¬p
+
+~p ^ q (premise)
+~p (simplication 1)
+r -> p (premise)
+~r (modus tollens 2, 3)
+~r -> s (premise)
+s (modus tollens 4, 5)
+s -> t (premise)
+t (modus tollens 6, 7)
+
+p v f
+~t -> ~p  (~~t v ~p) (~p v t) -> (f v t) (t v f)
+t -> b    (~t v b) -> (f v b)
+~f
+∴ b
+
+p -> q  (~p v q) (q v ~p)
+q -> r  (~q v r) -> (~p v r) (p -> r)
+~r      -> p
+∴ p
