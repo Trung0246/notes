@@ -356,3 +356,24 @@ p -> q  (~p v q) (q v ~p)
 q -> r  (~q v r) -> (~p v r) (p -> r)
 ~r      -> p
 ∴ p
+
+function
+
+f(x)
+
+each element in X is assigned one value and only one
+
+f(x) as set of ordered pair
+
+range is what f(x) can reach
+target is all possible result
+
+3(2x+4)^2+6(2x+4)+12
+3(2x+4)^2+12x+24+12
+
+one-to-one: every input will have different output
+onto: A->B, as every possible value in B MUST BE USED by A
+
+bijection: both
+
+piecewise is not invertible ?
