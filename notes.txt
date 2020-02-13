@@ -377,3 +377,91 @@ onto: A->B, as every possible value in B MUST BE USED by A
 bijection: both
 
 piecewise is not invertible ?
+
+function gen (a, c = 0, ret = [], curr = []) {
+	for (let i = 0; i < a[c].length; ++ i) {
+		curr[c] = a[c][i];
+		if (c === a.length - 1) ret.push([].concat(curr));
+		else gen (a, c + 1, ret, curr);
+	}
+	return ret;
+}
+
+console.log(gen([[123, 234], [345, 456, 567], [678, 789]]));
+
+function DFS (arr) {
+	
+}
+
+predecessor vs sucessor:
++---+   +---+
+| P +-->| S |
++---+   +---+
+
+P is the predecessor of S
+S is the sucessor of P
+
+indegree: 0 (no predecessor)
+
+(unit/ currency conversion) (undirected)
+(pathfinding) (directed)
+(URL) (directed)
+(trangle mesh modeling (cloth)) (undirected)
+(electronic circuit) (directed)
+
+(directory) (more like a tree)
+(triangulation) (undirected)
+
+https://codepen.io/Blindman67/pen/ZJYejP (cloth)
+
+zero-one matrix
+unit matrix 
+[
+	1, 0, 0
+	0, 1, 0
+	0, 0, 1
+]
+
+basic matrix operation
+
+transpose
+[
+0, 1, 1
+0, 0, 1
+]
+
+[
+0, 0
+1, 0
+1, 1
+]
+
+square matrix
+
+reflective: every a ∈ A, aRA (point to itself)
+symmetric: aRb then bRa (1, 2) (2, 1) (point to each other)
+transitive: aRb & bRc, then aRc (point twithh order)
+						(1, 2) (2, 3) -> (1, 3)
+						(1, 2) (2, 1) -> (1, 1)
+
+add anti, then it opposite
+
+(1, 1) (2, 2) (3, 3) (4, 4)
+if it ONLY reflective, then it BOTH symmetric and anti-symmetric
+	also transitive
+
+if all 3, then equivalent relation
+
+R = {(), (), ()}
+
+Equivalent class
+
+{}
+{}
+{}
+
+(000) (001) (010) (011) (100) (101) (110) (111)
+
+(000) (001) (010) (100)
+
+(111) (110) (101) (011)
