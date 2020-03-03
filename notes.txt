@@ -465,3 +465,27 @@ Equivalent class
 (000) (001) (010) (100)
 
 (111) (110) (101) (011)
+
+Math.nPr = function (num1, num2) {
+	let result = 1;
+	for (let i = 0; i < num2; ++i)
+		result *= num1 - i;
+	return result;
+};
+Math.nCr = function (num1, num2) {
+	let result = 1;
+	for (let i = 0; i < num2; ++i)
+		result *= (num1 - i) / (i + 1);
+	return result;
+};
+Math.nRr = function (num1, num2) {
+	return Math.nCr(num1 + num2 - 1, num1 - 1);
+};
+Math.nIr = function (num1, arr) {
+	let result = 1;
+	for (let i = 0; i < arr.length; ++i)
+		result *= Math.nPr(arr[i], arr[i]);
+	return Math.nPr(num1, num1) / result;
+};
+
+
