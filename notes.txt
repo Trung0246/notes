@@ -487,6 +487,9 @@ Math.nIr = function (num1, arr) {
 		result *= Math.nPr(arr[i], arr[i]);
 	return Math.nPr(num1, num1) / result;
 };
+Math.fact = function (num) {
+	return Math.nPr(num, num);
+};
 function nIrWord (word) {
 	let data = [];
 	data.length = 26;
