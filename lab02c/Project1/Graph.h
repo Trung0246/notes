@@ -38,6 +38,8 @@ public:
 	void printAdjacentVertices(const std::string& vertex) const;
 	void printBFS(const std::string& vertex) const;
 
+	void modifyForTesting();
+
 	~Graph();
 
 private:

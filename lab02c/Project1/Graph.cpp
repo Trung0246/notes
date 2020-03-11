@@ -20,42 +20,46 @@ Graph::Graph() {
 	numOfVertices = 0;
 	maxVertices = MAX_MATRIX_VERTICES;
 
-	vertices = new string[maxVertices];
+	size_t maxVertices2 = static_cast<size_t>(maxVertices);
+
+	vertices = new string[maxVertices2];
 	
-	matrix = new int* [maxVertices];
+	matrix = new int* [maxVertices2] {nullptr};
 	for (int i = 0; i < maxVertices; ++i)
-		matrix[i] = new int[maxVertices] {0};
+		matrix[i] = new int[maxVertices2] {0};
 }
 
 // Overloaded constructor
 Graph::Graph(int totalVertices) {
 	numOfVertices = 0;
 	maxVertices = totalVertices;
+	size_t maxVertices2 = static_cast<size_t>(maxVertices);
 
-	vertices = new string[static_cast<size_t>(maxVertices)];
+	vertices = new string[maxVertices2];
 
-	matrix = new int* [static_cast<size_t>(maxVertices)];
+	matrix = new int* [maxVertices2] {nullptr};
 	for (int i = 0; i < maxVertices; ++i)
-		matrix[i] = new int[static_cast<size_t>(maxVertices)] {0}; //-V108 //-V697
+		matrix[i] = new int[maxVertices2] {0}; //-V108 //-V697
 }
 
 Graph::Graph(const Graph& other) noexcept {
 	numOfVertices = other.numOfVertices;
 	maxVertices = other.maxVertices;
+	size_t maxVertices2 = static_cast<size_t>(maxVertices);
 
-	vertices = new std::string[static_cast<size_t>(numOfVertices)];
-	matrix = new int*[static_cast<size_t>(numOfVertices)];
+	vertices = new string[maxVertices2];
+	matrix = new int*[maxVertices2];
 
-	for (size_t i = 0; i < static_cast<size_t>(numOfVertices); ++i) {
-		matrix[i] = new int[numOfVertices];
+	for (size_t i = 0; i < maxVertices2; ++i) {
+		matrix[i] = new int[maxVertices2];
 		vertices[i] = other.vertices[i];
-		for (size_t j = 0; j < static_cast<size_t>(numOfVertices); ++j)
+		for (size_t j = 0; j < maxVertices2; ++j)
 			matrix[i][j] = other.matrix[i][j];
 	}
 }
 Graph& Graph::operator=(const Graph& other) noexcept {
 	if (this == &other)
-		std::cout << "Same Graph";
+		cout << "Same Graph";
 	else {
 		Graph other2(other);
 		this->~Graph();
@@ -69,7 +73,7 @@ Graph::Graph(Graph&& other) noexcept : Graph() {
 }
 Graph& Graph::operator=(Graph&& other) noexcept {
 	if (this == &other)
-		std::cout << "Same Graph";
+		cout << "Same Graph";
 	else {
 		this->~Graph();
 		numOfVertices = other.numOfVertices;
@@ -98,16 +102,11 @@ void Graph::createGraph(
 	const vector<string>& labels
 ) {
 	numOfVertices = static_cast<int>(labels.size());
-	if (numOfVertices > maxVertices) numOfVertices = maxVertices; // wtf is numOfVertices being used for?
-
-	vertices = new std::string[static_cast<size_t>(numOfVertices)];
-	matrix = new int*[static_cast<size_t>(labels.size())];
 
 	for (size_t i = 0; i < static_cast<size_t>(numOfVertices); ++i) {
-		matrix[i] = new int[numOfVertices];
 		vertices[i] = labels.at(i);
 		for (size_t j = 0; j < static_cast<size_t>(numOfVertices); ++j)
-			matrix[i][j] = graphData.at(i).at(j);
+			matrix[i][j] = graphData.at(j).at(i);
 	}
 }
 
@@ -115,7 +114,7 @@ void Graph::createGraph(
 // Assume the list has at least one vertex.
 void Graph::printVertices() const {
 	for (size_t i = 0; i < static_cast<size_t>(numOfVertices); ++i)
-		std::cout << vertices[i] << " ";
+		cout << vertices[i] << " ";
 }
 
 // printAdjacentVertices
@@ -123,20 +122,22 @@ void Graph::printVertices() const {
 // Assume the vertex is somewhere in the list.
 // Assume there is at least one adjacency.
 void Graph::printAdjacentVertices(const string& vertex) const {
+	cout << vertex << ": ";
 	for (size_t i = 0; i < static_cast<size_t>(numOfVertices); ++i)
 		if (vertex == vertices[i]) {
 			for (size_t j = 0; j < static_cast<size_t>(numOfVertices); ++j)
 				if (matrix[j][i] == 1)
-					std::cout << vertices[j] << " ";
+					cout << vertices[j] << " ";
 			break;
 		}
+	cout << endl;
 }
 
 //printBFS
 void Graph::printBFS(const string& vertex) const {
 	size_t curr_proc_size = 0;
 	
-	queue<std::size_t> curr_index_column;
+	queue<size_t> curr_index_column;
 	size_t* curr_proc_same = new size_t[static_cast<size_t>(numOfVertices)]{};
 	
 	for (size_t i = 0; i < static_cast<size_t>(numOfVertices); ++i)
@@ -160,11 +161,25 @@ void Graph::printBFS(const string& vertex) const {
 	delete[] curr_proc_same;
 }
 
+void Graph::modifyForTesting() {
+	// To view arrays in debugger:
+	// vertices, 4
+	// matrix[0],4
+	// matrix[1],4
+	// ...
+
+	// Cannot modify vertices, because the main
+	// function uses the vector with labels
+	// Bill and Cinderella befriended
+	matrix[0][1] = 1;
+	matrix[1][0] = 1;
+}
+
 // destructor
 Graph::~Graph() {
 
 	if (matrix != nullptr) {
-		for (size_t i = 0; i < static_cast<size_t>(numOfVertices); ++i)
+		for (size_t i = 0; i < static_cast<size_t>(maxVertices); ++i)
 			delete[] matrix[i];
 		delete[] matrix;
 		matrix = nullptr;

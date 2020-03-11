@@ -1,0 +1,14 @@
+	void modifyForTesting()
+	{
+		// To view arrays in debugger:
+		// vertices, 4
+		// matrix[0],4
+		// matrix[1],4
+		// ...
+
+		// Cannot modify vertices, because the main
+		// function uses the vector with labels
+		// Bill and Cinderella befriended
+		matrix[0][1] = 1;
+		matrix[1][0] = 1;
+	}
