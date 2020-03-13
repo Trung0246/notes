@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <queue>
+
 using namespace std;
 
 // Default constructor
@@ -43,27 +44,26 @@ Graph::Graph(int totalVertices) {
 }
 
 Graph::Graph(const Graph& other) noexcept {
-	numOfVertices = other.numOfVertices;
 	maxVertices = other.maxVertices;
 	size_t maxVertices2 = static_cast<size_t>(maxVertices);
 
 	vertices = new string[maxVertices2];
 	matrix = new int*[maxVertices2];
 
-	for (size_t i = 0; i < maxVertices2; ++i) {
+	for (size_t i = 0; i < maxVertices2; ++i)
 		matrix[i] = new int[maxVertices2];
-		vertices[i] = other.vertices[i];
-		for (size_t j = 0; j < maxVertices2; ++j)
-			matrix[i][j] = other.matrix[i][j];
-	}
+
+	copy(other);
 }
 Graph& Graph::operator=(const Graph& other) noexcept {
 	if (this == &other)
 		cout << "Same Graph";
 	else {
-		Graph other2(other);
-		this->~Graph();
-		this->swap(other2);
+		if (maxVertices == other.maxVertices) copy(other);
+		else {
+			Graph other2(other);
+			this->swap(other2);
+		}
 	}
 	return *this;
 }
@@ -75,7 +75,7 @@ Graph& Graph::operator=(Graph&& other) noexcept {
 	if (this == &other)
 		cout << "Same Graph";
 	else {
-		this->~Graph();
+		this->~Graph(); // same with memory leak thingy
 		numOfVertices = other.numOfVertices;
 		maxVertices = other.maxVertices;
 		other.numOfVertices = 0;
@@ -96,6 +96,16 @@ void Graph::swap(Graph& other) {
 	std::swap(vertices, other.vertices);
 }
 
+void Graph::copy(const Graph& other) {
+	numOfVertices = other.numOfVertices;
+	size_t numOfVertices2 = static_cast<size_t>(numOfVertices);
+	for (size_t i = 0; i < numOfVertices2; ++i) {
+		vertices[i] = other.vertices[i];
+		for (size_t j = 0; j < numOfVertices2; ++j)
+			matrix[i][j] = other.matrix[i][j];
+	}
+}
+
 // createGraph
 void Graph::createGraph(
 	const vector<vector<int>>& graphData,
@@ -106,7 +116,7 @@ void Graph::createGraph(
 	for (size_t i = 0; i < static_cast<size_t>(numOfVertices); ++i) {
 		vertices[i] = labels.at(i);
 		for (size_t j = 0; j < static_cast<size_t>(numOfVertices); ++j)
-			matrix[i][j] = graphData.at(j).at(i);
+			matrix[i][j] = graphData.at(j).at(i); // works as intended, yup
 	}
 }
 
@@ -177,7 +187,6 @@ void Graph::modifyForTesting() {
 
 // destructor
 Graph::~Graph() {
-
 	if (matrix != nullptr) {
 		for (size_t i = 0; i < static_cast<size_t>(maxVertices); ++i)
 			delete[] matrix[i];
@@ -188,7 +197,6 @@ Graph::~Graph() {
 		delete[] vertices;
 		vertices = nullptr;
 	}
-	// std::cout << "Track: " << track;
 }
 
 

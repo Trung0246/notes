@@ -49,6 +49,8 @@ private:
 	int maxVertices;	//max number of vertices the graph can hold (capacity)
 	int numOfVertices;	//total number of vertices
 
+	void copy(const Graph&);
+
 	// int track = 0;
 };
 
