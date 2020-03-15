@@ -39,6 +39,8 @@ public:
 	void printBFS(const std::string& vertex) const;
 
 	void modifyForTesting();
+	
+	void destroyGraph();
 
 	~Graph();
 
