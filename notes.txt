@@ -510,6 +510,12 @@ Math.nIr = function (num1, arr) {
 		result *= Math.fact(arr[i]);
 	return Math.fact(num1) / result;
 };
+Math.bern = function (m, n, p, q) {
+	let sum = 0;    
+	for (let k = m; k <= n; ++ k)
+		sum += Math.nCr(n, k) * Math.pow(p, k) * Math.pow(q, n - k);
+	return sum; 
+};
 function nIrWord (word) {
 	let data = [];
 	data.length = 26;
