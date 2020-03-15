@@ -21,32 +21,41 @@ Graph::Graph() {
 	numOfVertices = 0;
 	maxVertices = MAX_MATRIX_VERTICES;
 
-	size_t maxVertices2 = static_cast<size_t>(maxVertices);
-
+	// size_t maxVertices2 = static_cast<size_t>(maxVertices);
+	
+	vertices = nullptr;
+	matrix = nullptr;
+	
+	/*
 	vertices = new string[maxVertices2];
 	
 	matrix = new int* [maxVertices2] {nullptr};
 	for (int i = 0; i < maxVertices; ++i)
 		matrix[i] = new int[maxVertices2] {0};
+	*/
 }
 
 // Overloaded constructor
 Graph::Graph(int totalVertices) {
 	numOfVertices = 0;
 	maxVertices = totalVertices;
+	vertices = nullptr;
+	matrix = nullptr;
+	/*
 	size_t maxVertices2 = static_cast<size_t>(maxVertices);
-
+	
 	vertices = new string[maxVertices2];
 
 	matrix = new int* [maxVertices2] {nullptr};
 	for (int i = 0; i < maxVertices; ++i)
 		matrix[i] = new int[maxVertices2] {0}; //-V108 //-V697
+	*/
 }
 
 Graph::Graph(const Graph& other) noexcept {
 	maxVertices = other.maxVertices;
 	size_t maxVertices2 = static_cast<size_t>(maxVertices);
-
+	
 	vertices = new string[maxVertices2];
 	matrix = new int*[maxVertices2];
 
@@ -112,6 +121,16 @@ void Graph::createGraph(
 	const vector<string>& labels
 ) {
 	numOfVertices = static_cast<int>(labels.size());
+	
+	if (vertices == nullptr) {
+		size_t maxVertices2 = static_cast<size_t>(maxVertices);
+	
+		vertices = new string[maxVertices2];
+
+		matrix = new int* [maxVertices2] {nullptr};
+		for (int i = 0; i < maxVertices; ++i)
+			matrix[i] = new int[maxVertices2] {0}; //-V108 //-V697
+	}
 
 	for (size_t i = 0; i < static_cast<size_t>(numOfVertices); ++i) {
 		vertices[i] = labels.at(i);
@@ -185,18 +204,19 @@ void Graph::modifyForTesting() {
 	matrix[1][0] = 1;
 }
 
+void Graph::destroyGraph() {
+	maxVertices = numOfVertices = 0;
+	delete[] vertices;
+	vertices = nullptr;
+	for (size_t i = 0; i < static_cast<size_t>(maxVertices); ++i)
+		delete[] matrix[i];
+	delete[] matrix;
+	matrix = nullptr;
+}
+
 // destructor
 Graph::~Graph() {
-	if (matrix != nullptr) {
-		for (size_t i = 0; i < static_cast<size_t>(maxVertices); ++i)
-			delete[] matrix[i];
-		delete[] matrix;
-		matrix = nullptr;
-	}
-	if (vertices != nullptr) {
-		delete[] vertices;
-		vertices = nullptr;
-	}
+	destroyGraph();
 }
 
 
