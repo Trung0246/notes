@@ -198,6 +198,9 @@
 @@||lm.licenses.adobe.com
 @@||activate.adobe.com
 
+! Binance dataseed for swap
+@@||bsc-dataseed*.*.*
+
 @@||0.client-channel.google.com
 @@||1drv.com
 @@||2.android.pool.ntp.org
