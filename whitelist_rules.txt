@@ -199,7 +199,8 @@
 @@||activate.adobe.com
 
 ! Binance dataseed for swap
-@@||bsc-dataseed*.*.*
+! Ex: https://bsc-dataseed.binance.org, https://bsc-dataseed1.ninicoin.io/
+@@/bsc-dataseed\d*\.\w+\.*/
 
 @@||0.client-channel.google.com
 @@||1drv.com
