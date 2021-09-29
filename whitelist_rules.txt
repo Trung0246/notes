@@ -205,6 +205,10 @@
 ! Ex: https://bsc-dataseed.binance.org, https://bsc-dataseed1.ninicoin.io/
 @@/bsc-dataseed\d*\.\w+\.*/
 
+! Curve.fi
+@@||mainnet.infura.io
+@@||stats.curve.fi
+
 @@||0.client-channel.google.com
 @@||1drv.com
 @@||2.android.pool.ntp.org
