@@ -1,3 +1,6 @@
+! Title: Trung0246's Filter
+! Expires: 12 hours
+
 ! Contributed by Anudeep <anudeep@protonmail.com>
 ! Project home page: https://github.com/anudeepND/whitelist
 ! Licence: https://github.com/anudeepND/whitelist/blob/master/LICENSE
