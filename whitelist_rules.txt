@@ -1,9 +1,11 @@
 ! Title: Trung0246's Filter
-! Expires: 12 hours
+! Expires: 1 day
 
 ! Contributed by Anudeep <anudeep@protonmail.com>
 ! Project home page: https://github.com/anudeepND/whitelist
 ! Licence: https://github.com/anudeepND/whitelist/blob/master/LICENSE
+
+! Old dynamic hosts: https://pastebin.com/htcu6FFU
 
 ! Adult Swim Videos on Amazon Firestick
 @@||pmd.cdn.turner.com
